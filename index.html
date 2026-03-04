@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
+  <script>
+    if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light-mode');
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="calculator">
+    <button class="theme-toggle" type="button" aria-label="Toggle light mode" title="Toggle light/dark mode">
+      <span class="icon-sun" aria-hidden="true">☀️</span>
+      <span class="icon-moon" aria-hidden="true">🌙</span>
+    </button>
     <div class="display">
       <span class="display-value">0</span>
     </div>

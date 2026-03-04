@@ -1,5 +1,16 @@
 const display = document.querySelector('.display-value');
 const buttons = document.querySelectorAll('.btn');
+const themeToggle = document.querySelector('.theme-toggle');
+
+// Theme (class on html for no flash; head script sets initial state)
+if (localStorage.getItem('theme') === 'light') {
+  document.documentElement.classList.add('light-mode');
+}
+
+themeToggle?.addEventListener('click', () => {
+  document.documentElement.classList.toggle('light-mode');
+  localStorage.setItem('theme', document.documentElement.classList.contains('light-mode') ? 'light' : 'dark');
+});
 
 let currentValue = '0';
 let previousValue = '';
