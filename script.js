@@ -1,16 +1,27 @@
 const display = document.querySelector('.display-value');
 const buttons = document.querySelectorAll('.btn');
-const themeToggle = document.querySelector('.theme-toggle');
+const themeBtns = document.querySelectorAll('.theme-btn');
 
 // Theme (class on html for no flash; head script sets initial state)
-if (localStorage.getItem('theme') === 'light') {
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'light') {
   document.documentElement.classList.add('light-mode');
 }
 
-themeToggle?.addEventListener('click', () => {
-  document.documentElement.classList.toggle('light-mode');
-  localStorage.setItem('theme', document.documentElement.classList.contains('light-mode') ? 'light' : 'dark');
+function setTheme(theme) {
+  document.documentElement.classList.toggle('light-mode', theme === 'light');
+  localStorage.setItem('theme', theme);
+  themeBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.theme === theme);
+  });
+}
+
+themeBtns.forEach(btn => {
+  btn.addEventListener('click', () => setTheme(btn.dataset.theme));
 });
+
+// Sync active state on load
+setTheme(savedTheme);
 
 let currentValue = '0';
 let previousValue = '';

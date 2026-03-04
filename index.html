@@ -10,11 +10,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="app-header">
+    <h1>Calculator</h1>
+    <div class="theme-switcher">
+      <button class="theme-btn active" data-theme="dark" type="button">Dark</button>
+      <button class="theme-btn" data-theme="light" type="button">Light</button>
+    </div>
+  </header>
+  <main class="app-content">
   <div class="calculator">
-    <button class="theme-toggle" type="button" aria-label="Toggle light mode" title="Toggle light/dark mode">
-      <span class="icon-sun" aria-hidden="true">☀️</span>
-      <span class="icon-moon" aria-hidden="true">🌙</span>
-    </button>
     <div class="display">
       <span class="display-value">0</span>
     </div>
@@ -44,6 +48,7 @@
       <button class="btn operator equals" data-action="equals">=</button>
     </div>
   </div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
